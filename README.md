@@ -54,3 +54,60 @@ Once you complete both items above, submit the link to your repository for lab 2
 - [Make a ReadMe file Web-based Editor](https://www.makeareadme.com/)
 - [Draw.io Web-based diagramming tool](https://app.diagrams.net/)
 - [Creating Entity Relationship Diagrams using Draw.io](https://www.youtube.com/watch?v=lAtCySGDD48)
+
+
+---
+
+# Lab 2 Submission – Bilal Ahmed
+
+## Entities
+
+| Entity | Description | Possible Attributes |
+|---|---|---|
+| **STUDENT** | A person enrolled at the school. | student_id (identifier), student_name, student_address |
+| **SEAT** | A seat that is occupied by a student. | seat_no (identifier), seat_position |
+| **INSTRUCTOR** | The person assigned to teach each course. | instructor_no (identifier), instructor_name, instructor_faculty |
+| **COURSE** | A course that students enroll in. | course_name and course_number (composite identifier) |
+| **SECTION** | A section designated for a course. | section_number (identifier) |
+| **PROFESSOR** | The person assigned to teach each section. | professor_id (identifier), professor_name, professor_faculty |
+| **ENROLLMENT** | *Associative entity.* A record created when one student signs up for one course. | student_id, course_name, course_number |
+| **COURSE_SECTION** | *Associative entity.* Links each course to its sections. | course_name, course_number, section_number |
+
+## Relationships
+
+### Original relationships
+1. A **STUDENT** <u>fills</u> exactly one **SEAT**.
+   A **SEAT** <u>is filled by</u> exactly one **STUDENT**. *(one-to-one)*
+2. A **STUDENT** <u>takes</u> one or many **COURSES**.
+   A **COURSE** <u>is taken by</u> one or many **STUDENTS**. *(many-to-many → resolved by ENROLLMENT)*
+3. An **INSTRUCTOR** <u>teaches</u> one or many **COURSES**.
+   A **COURSE** <u>is taught by</u> exactly one **INSTRUCTOR**. *(one-to-many)*
+4. A **COURSE** <u>has</u> one or many **SECTIONS**.
+   A **SECTION** <u>belongs to</u> one or many **COURSES**. *(many-to-many → resolved by COURSE_SECTION)*
+5. A **PROFESSOR** <u>teaches</u> zero or many **SECTIONS**.
+   A **SECTION** <u>is taught by</u> exactly one **PROFESSOR**. *(one-to-many)*
+
+### Relationships formed by associative entities
+6. A **STUDENT** <u>has</u> one or many **ENROLLMENTS**.
+   An **ENROLLMENT** <u>belongs to</u> exactly one **STUDENT**.
+7. A **COURSE** <u>has</u> one or many **ENROLLMENTS**.
+   An **ENROLLMENT** <u>is for</u> exactly one **COURSE**.
+8. A **COURSE** <u>has</u> one or many **COURSE_SECTIONS**.
+   A **COURSE_SECTION** <u>belongs to</u> exactly one **COURSE**.
+9. A **SECTION** <u>has</u> one or many **COURSE_SECTIONS**.
+   A **COURSE_SECTION** <u>belongs to</u> exactly one **SECTION**.
+
+## Assumptions (based on the school ERD)
+
+| # | According to the ERD... | Answer |
+|---|---|---|
+| 1 | Can a student exist without a seat? | **No** |
+| 2 | Can a course have more than one instructor? | **No** |
+| 3 | Can a student take zero courses? | **No** |
+| 4 | Can a section exist without a professor? | **No** |
+| 5 | Can a professor teach zero sections? | **Yes** |
+| 6 | Can a seat be filled by more than one student? | **No** |
+
+## Conceptual ER Diagram
+
+![Conceptual ERD](erd.png)
