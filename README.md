@@ -110,4 +110,4 @@ Once you complete both items above, submit the link to your repository for lab 2
 
 ## Conceptual ER Diagram
 
-![Conceptual ERD](erd.png)
+  ![Conceptual ERD](lab2_erd.drawio.png)
